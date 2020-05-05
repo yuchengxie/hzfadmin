@@ -8,13 +8,11 @@ class OcrController extends BaseController {
 
   }
 
-  async front() {
-    console.log('front1111');
-    
-    let img=fs.readFileSync('WechatIMG5.jpeg','utf-8');
-    console.log('img:',img);
+  async idVeriy() {
+    let body = this.ctx.request.body;
+    let res = await this.ctx.service.ocr.getCardInfoAli(body);
     this.ctx.body = {
-      res: '11'
+      res: res
     }
   }
 }

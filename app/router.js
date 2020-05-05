@@ -11,7 +11,7 @@ module.exports = app => {
     router,
     controller
   } = app;
-  
+
   //public
   router.get('/del', controller.base.del);
 
@@ -89,10 +89,10 @@ module.exports = app => {
   router.post('/system/setMenu', controller.setting.setMenu);
 
   // express
-  router.get('/express/co',controller.express.co);
-  router.get('/express/num',controller.express.num);
-  router.get('/express/trace',controller.express.trace);
+  router.get('/express/co', controller.express.co);
+  router.get('/express/num', controller.express.num);
+  router.get('/express/trace', controller.express.trace);
 
   //ocr
-  // router.post('/ocr/front',controller.ocr.front);
+  router.post('/ocr/idVeriy', controller.ocr.idVeriy);
 };
