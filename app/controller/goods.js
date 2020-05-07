@@ -17,7 +17,14 @@ class GoodsController extends Controller {
 
   async add() {
     let formFields = this.ctx.request.body;
-    formFields.goods_sn=await this.service.tools.getRFID();//临时数据测试，随机生成
+    console.log('add good formFields', formFields);
+    //解决cate_id为空
+    if(formFields.cate_id===''){
+      
+    }
+
+
+    formFields.goods_sn = await this.service.tools.getRFID();//临时数据测试，随机生成
     console.log('goods add formFields:', formFields);
     if (formFields.goods_type_id && typeof formFields.goods_type_id === 'string') {
       formFields.goods_type_id = this.app.mongoose.Types.ObjectId(formFields.goods_type_id);
@@ -180,18 +187,18 @@ class GoodsController extends Controller {
     });
     //获取商品分类
     let goodsCate = await this.ctx.model.GoodsCate.aggregate([{
-        $lookup: {
-          from: "goods_cate",
-          localField: "_id",
-          foreignField: "pid",
-          as: "items"
-        }
-      },
-      {
-        $match: {
-          pid: "0"
-        }
+      $lookup: {
+        from: "goods_cate",
+        localField: "_id",
+        foreignField: "pid",
+        as: "items"
       }
+    },
+    {
+      $match: {
+        pid: "0"
+      }
+    }
     ])
     this.ctx.body = {
       code: 20000,

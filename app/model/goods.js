@@ -5,11 +5,11 @@ module.exports = app => {
   var d = new Date();
   const GoodsSchema = new Schema({
     master: { type: String, default: '' },
-    owner:{type: String, default: ''},
+    owner: { type: String, default: '' },
     title: { type: String },
     sub_title: { type: String },
     goods_sn: { type: String, default: "00000000000000000000000000000000" },
-    cate_id: { type: Schema.Types.ObjectId },
+    cate_id: { type: Schema.Types.Mixed },
     click_count: {
       type: Number,
       default: 100

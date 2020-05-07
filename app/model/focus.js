@@ -6,7 +6,8 @@ module.exports = app => {
 
   const FocusSchema = new Schema({
     title: { type: String },
-    type: { type: Number },
+    // type: { type: Number },
+    type: { type: String },
     focus_img: { type: String, default: "" },
     link: { type: String },
     sort: { type: Number },

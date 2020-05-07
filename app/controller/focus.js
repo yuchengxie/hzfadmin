@@ -24,6 +24,7 @@ class FocusController extends BaseController {
   }
 
   async add() {
+    console.log('body:',this.ctx.request.body);
     let focus = new this.ctx.model.Focus(this.ctx.request.body);
     await focus.save();
     this.ctx.body = {
