@@ -58,7 +58,8 @@ module.exports = app => {
   router.post('/goods/type/attr/edit', controller.goodsTypeAttr.edit);
 
   //goods
-  router.get('/goods', controller.goods.index);
+  // router.get('/goods', controller.goods.index);
+  router.post('/goods', controller.goods.index);
   router.post('/goods/add', controller.goods.add);
   router.post('/goods/edit', controller.goods.edit);
   router.get('/goods/mix', controller.goods.mix);

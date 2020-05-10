@@ -4,12 +4,13 @@ module.exports = app => {
 
   var d = new Date();
   const GoodsSchema = new Schema({
-    master: { type: String, default: '' },
+    master: { type: String, default: '' },//唯一 对应admin 中的username
+    master_id: { type: Schema.Types.Mixed },////唯一 对应admin 中的username对应的id
     owner: { type: String, default: '' },
     title: { type: String },
     sub_title: { type: String },
     goods_sn: { type: String, default: "00000000000000000000000000000000" },
-    cate_id: { type: Schema.Types.Mixed },
+    cate_id: { type: String, default: '' },
     click_count: {
       type: Number,
       default: 100

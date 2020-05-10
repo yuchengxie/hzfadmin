@@ -4,7 +4,16 @@ const Controller = require('egg').Controller;
 
 class GoodsController extends Controller {
   async index() {
-    let goodsResult = await this.ctx.model.Goods.find({});
+    let params = this.ctx.request.body;
+    console.log('params:', params);
+    let tj = {}
+    if (params.master_id) {
+      tj = {
+        master_id: params.master_id
+      }
+    }
+    console.log('tj:',tj);
+    let goodsResult = await this.ctx.model.Goods.find(tj);
     let goodsColor = await this.ctx.model.GoodsColor.find({});
     this.ctx.body = {
       code: 20000,
@@ -19,8 +28,8 @@ class GoodsController extends Controller {
     let formFields = this.ctx.request.body;
     console.log('add good formFields', formFields);
     //解决cate_id为空
-    if(formFields.cate_id===''){
-      
+    if (formFields.cate_id === '') {
+
     }
 
 

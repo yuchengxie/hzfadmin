@@ -22,11 +22,17 @@ class LoginController extends Controller {
       var [accessArr, list] = await this.service.admin.getAuthList(role_id);
       this.ctx.body = {
         code: 20000,
+        // msg: {
+        //   msg: {
+        //     userinfo: result,
+        //     accessArr,
+        //     list
+        //   }
+        // }
         msg: {
-          msg: {
-            accessArr,
-            list
-          }
+          userinfo: result,
+          accessArr,
+          list
         }
       }
     } else {
