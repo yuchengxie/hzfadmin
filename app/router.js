@@ -97,9 +97,11 @@ module.exports = app => {
   //ocr
   router.post('/ocr/idVeriy', controller.ocr.idVeriy);
 
+
   // hzfapi-mobile
-  router.post('/v1/orders/add', controller.orders.add);
-  router.post('/v1/orders', controller.orders.index);
-  router.post('/v1/orders/confirm', controller.orders.confirm);
-  router.post('/v1/orders/change', controller.orders.change);
+  // router.post('v1/d',controller.order)
+  // router.post('/v1/orders/add', controller.orders.add);
+  // router.post('/v1/orders', controller.orders.index);
+  // router.post('/v1/orders/confirm', controller.orders.confirm);
+  // router.post('/v1/orders/change', controller.orders.change);
 };
