@@ -6,6 +6,7 @@
 /**
  * @param {Egg.Application} app - egg application
  */
+
 module.exports = app => {
   const {
     router,
@@ -97,11 +98,30 @@ module.exports = app => {
   //ocr
   router.post('/ocr/idVeriy', controller.ocr.idVeriy);
 
+  //user
+  router.get('/user', controller.user.index);
+  router.post('/user/detail', controller.user.detail);
 
-  // hzfapi-mobile
-  // router.post('v1/d',controller.order)
-  // router.post('/v1/orders/add', controller.orders.add);
-  // router.post('/v1/orders', controller.orders.index);
-  // router.post('/v1/orders/confirm', controller.orders.confirm);
-  // router.post('/v1/orders/change', controller.orders.change);
+  //order
+  router.get('/order',controller.order.index);
+
+  //address
+  router.get('/address',controller.address.index);
+  router.post('/address/detail',controller.address.detail);
+
+  // ================手机接口========================
+  // router.get('/v1/home', controller.phone.home.index);
+  // router.post('/v1/user', controller.phone.user.index);
+  // router.get('/v1/user/list', controller.phone.user.list)
+  // router.post('/v1/user/bind', controller.phone.user.bind);
+  // router.post('/v1/user/unbind', controller.phone.user.unbind);
+  // router.post('/v1/user/sendPhoneCode', controller.phone.user.sendPhoneCode);
+  // router.post('/v1/user/register', controller.phone.user.register);
+  // router.post('/v1/user/login', controller.phone.user.login);
+
+  // router.post('/v1/orders', controller.phone.order.index);
+  // router.get('/v1/order/list', controller.phone.order.getOrders);
+  // router.post('/v1/orders/add', controller.phone.order.add);
+  // router.post('/v1/orders/confirm', controller.phone.order.confirm);
+  // router.post('/v1/orders/change', controller.phone.order.change);
 };

@@ -13,7 +13,21 @@ module.exports = appInfo => {
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {};
+  // const config = exports = {};
+  const config = exports = {
+    logger: {
+      // appLogName: 'info_log.log',
+      // coreLogName: 'egg-web.log',
+      // agentLogName: 'egg-agent.log',
+      // errorLogName: 'common-error.log',
+    }
+  };
+
+  config.logger = {
+    level: 'INFO',
+    dir: path.join(__dirname, '../logs/prod'), // 保存路径为工程路径下`logs/prod/app`,
+    appLogName: 'info.log'
+  };
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1577093073011_8675';
@@ -55,8 +69,8 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
   };
 
-  config.express={
-    appCode:'APPCODE 99a7ec151fe248f995582d2420e9a298'
+  config.express = {
+    appCode: 'APPCODE 99a7ec151fe248f995582d2420e9a298'
   }
 
   // exports.security = {
