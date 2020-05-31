@@ -7,27 +7,27 @@ class AccessController extends BaseController {
   async index() {
     // let list = await this.ctx.model.Access.find({});
     let list = await this.ctx.model.Access.aggregate([{
-        $lookup: {
-          from: "access",
-          localField: "_id",
-          foreignField: "module_id",
-          as: "items",
-        }
-      },
-      {
-        $match: {
-          module_id: "0"
-        }
-      },
-      {
-        $sort:{
-          sort:1
-        }
+      $lookup: {
+        from: "access",
+        localField: "_id",
+        foreignField: "module_id",
+        as: "items",
       }
+    },
+    {
+      $match: {
+        module_id: "0"
+      }
+    },
+    {
+      $sort: {
+        sort: 1
+      }
+    }
     ]);
     var modules = await this.ctx.model.Access.find({
       "module_id": "0"
-    }, '_id module_name');
+    },'_id module_name').sort({"sort":1});
 
     this.ctx.body = {
       code: 20000,

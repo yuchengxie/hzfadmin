@@ -12,6 +12,13 @@ class LoginController extends Controller {
   async login() {
     let fields = this.ctx.request.body;
     fields.password = await this.service.tools.md5(fields.password);
+
+    // if(fields.username==="admin"){
+    //   // this.getAuthList();
+    //   await this.service.admin.getAllAuthList();
+    //   return;
+    // }
+    
     let result = await this.ctx.model.Admin.find({
       "username": fields.username,
       "password": fields.password

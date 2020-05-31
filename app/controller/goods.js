@@ -102,7 +102,7 @@ class GoodsController extends Controller {
   async edit() {
     let formFields = this.ctx.request.body;
     // formFields.goods_sn=await this.service.tools.getRFID()
-    console.log('edit:', formFields);
+    // console.log('edit:', formFields);
     if (formFields.goods_type_id && typeof formFields.goods_type_id === 'string') {
       formFields.goods_type_id = this.app.mongoose.Types.ObjectId(formFields.goods_type_id);
     }

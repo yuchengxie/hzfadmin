@@ -67,6 +67,29 @@ class AdminService extends Service {
     return false;
   }
 
+
+  async getAllAuthList(){
+     //1、获取全部的权限
+     var result = await this.ctx.model.Access.aggregate([
+      {
+        $lookup: {
+          from: 'access',
+          localField: '_id',
+          foreignField: 'module_id',
+          as: 'items'
+        }
+      },
+      {
+        $match: {
+          "module_id": '0'
+        }
+      }
+    ]);
+
+    console.log('result:',result);
+
+  }
+
   //获取权限列表的方法
   async getAuthList(role_id) {
 
@@ -92,6 +115,11 @@ class AdminService extends Service {
       {
         $match: {
           "module_id": '0'
+        }
+      },
+      {
+        $sort:{
+          sort:1
         }
       }
     ]);
