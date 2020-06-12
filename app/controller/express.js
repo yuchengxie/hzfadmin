@@ -40,6 +40,16 @@ class ExpressController extends BaseController {
       return;
     }
     let res = await this.service.express.queryTraceByNumber(number);
+    // console.log('res:', res.data.list.traces);
+    // if (res.data.list.traces && res.data.list.traces.length === 15) {
+    //   //存入数据库 - express_no / traces
+    //   let express = {
+    //     express_no:number,
+    //     detail:res.data.list
+    //   };
+    //   //先查找是否存在
+    //   await this.ctx.model.Express.save(express);
+    // }
     if (res && res.data) {
       this.ctx.body = {
         list: res.data

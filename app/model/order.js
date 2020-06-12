@@ -17,8 +17,12 @@ module.exports = app => {
         payType: Number,//支付类型
 
         // 增加物流id
-        express_id: {
-            type: mongoose.Types.ObjectId
+        // express_id: {
+        //     type: mongoose.Types.ObjectId
+        // },
+        express_no: {
+            type: String,
+            default: '',
         },
 
         goodsData: {

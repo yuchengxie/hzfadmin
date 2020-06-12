@@ -104,6 +104,7 @@ module.exports = app => {
 
   //order
   router.get('/order',controller.order.index);
+  router.post('/orderExpress',controller.order.bindOrderForExpress);
 
   //address
   router.get('/address',controller.address.index);

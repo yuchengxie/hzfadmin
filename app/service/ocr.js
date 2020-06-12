@@ -10,7 +10,6 @@ class OCRService extends Service {
 
   // async getCardInfoAli(base64Str, side) {
   async getCardInfoAli(body) {
-
     let url = 'https://dm-51.data.aliyun.com/rest/160601/ocr/ocr_idcard.json';
     // let base64Str = this.imgToBase64Filter(imgUrl);
     let options = {

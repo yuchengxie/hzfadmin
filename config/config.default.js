@@ -68,7 +68,7 @@ module.exports = appInfo => {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
   };
-
+  
   config.express = {
     appCode: 'APPCODE 99a7ec151fe248f995582d2420e9a298'
   }
