@@ -103,26 +103,18 @@ module.exports = app => {
   router.post('/user/detail', controller.user.detail);
 
   //order
-  router.get('/order',controller.order.index);
-  router.post('/orderExpress',controller.order.bindOrderForExpress);
+  router.get('/order', controller.order.index);
+  router.post('/orderExpress', controller.order.bindOrderForExpress);
 
   //address
-  router.get('/address',controller.address.index);
-  router.post('/address/detail',controller.address.detail);
+  router.get('/address', controller.address.index);
+  router.post('/address/detail', controller.address.detail);
 
-  // ================手机接口========================
-  // router.get('/v1/home', controller.phone.home.index);
-  // router.post('/v1/user', controller.phone.user.index);
-  // router.get('/v1/user/list', controller.phone.user.list)
-  // router.post('/v1/user/bind', controller.phone.user.bind);
-  // router.post('/v1/user/unbind', controller.phone.user.unbind);
-  // router.post('/v1/user/sendPhoneCode', controller.phone.user.sendPhoneCode);
-  // router.post('/v1/user/register', controller.phone.user.register);
-  // router.post('/v1/user/login', controller.phone.user.login);
+  //清理缓存
+  router.get('/redis/flushall', controller.cache.flushall);
 
-  // router.post('/v1/orders', controller.phone.order.index);
-  // router.get('/v1/order/list', controller.phone.order.getOrders);
-  // router.post('/v1/orders/add', controller.phone.order.add);
-  // router.post('/v1/orders/confirm', controller.phone.order.confirm);
-  // router.post('/v1/orders/change', controller.phone.order.change);
+  //营销管理--优惠券
+  router.get('/coupon', controller.coupon.index);
+  router.post('/coupon/add', controller.coupon.add);
+  router.post('/coupon/edit', controller.coupon.edit);
 };

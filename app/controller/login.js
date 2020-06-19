@@ -25,7 +25,6 @@ class LoginController extends Controller {
     });
     if (result.length > 0) {
       let role_id = result[0].role_id;
-      console.log('role_id:', role_id);
       var [accessArr, list] = await this.service.admin.getAuthList(role_id);
       this.ctx.body = {
         code: 20000,

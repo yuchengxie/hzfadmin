@@ -5,14 +5,12 @@ const Controller = require('egg').Controller;
 class GoodsController extends Controller {
   async index() {
     let params = this.ctx.request.body;
-    console.log('params:', params);
     let tj = {}
     if (params.master_id) {
       tj = {
         master_id: params.master_id
       }
     }
-    console.log('tj:',tj);
     let goodsResult = await this.ctx.model.Goods.find(tj);
     let goodsColor = await this.ctx.model.GoodsColor.find({});
     this.ctx.body = {

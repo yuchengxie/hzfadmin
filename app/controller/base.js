@@ -7,6 +7,10 @@ class BaseController extends Controller {
     let model = this.ctx.request.query.model;
     // URLDecoder.decode();
     let _id = this.ctx.request.query.id;
+    //推送消息
+    if (model === 'Info') {
+      await this.service.mqtt.push("info_delete");
+    }
     await this.ctx.model[model].deleteOne({
       _id
     });
@@ -23,14 +27,14 @@ class BaseController extends Controller {
   //   }
   // }
 
-  async success(msg={}) {
+  async success(msg = {}) {
     this.ctx.body = {
       code: 0,
       msg
     };
   }
 
-  async error( msg="服务器错误") {
+  async error(msg = "服务器错误") {
     this.ctx.body = {
       code: 1,
       msg
@@ -38,17 +42,17 @@ class BaseController extends Controller {
   }
   async awaitWrap(promise) {
     return promise.then(res => {
-            return {
-              code:0,
-              msg:res
-            }
-        })
-        .catch(err => {
-            return {
-              code:1,
-              msg:err
-            }
-        })
+      return {
+        code: 0,
+        msg: res
+      }
+    })
+      .catch(err => {
+        return {
+          code: 1,
+          msg: err
+        }
+      })
   }
 
 }

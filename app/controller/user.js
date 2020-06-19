@@ -12,7 +12,6 @@ class UserController extends BaseController {
 
   async detail() {
     let params = this.ctx.request.body;
-    console.log('params:', params);
     let _id = params.id;
     if (!_id) {
       this.ctx.body = {
