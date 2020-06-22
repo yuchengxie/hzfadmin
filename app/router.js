@@ -120,6 +120,11 @@ module.exports = app => {
   router.post('/coupon/edit', controller.coupon.edit);
 
   //2.平台
+  router.get('/plat', controller.plat.index);
+  router.get('/plat/push', controller.plat.push);
+  router.post('/plat/add', controller.plat.add);
+  router.post('/plat/edit', controller.plat.edit);
+
   // router.get('/coupon/platform/push', controller.platform.platPush);
   // router.get('/coupon/platform', controller.platform.index);
   // router.post('/coupon/platform/add', controller.platform.add);

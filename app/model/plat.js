@@ -37,5 +37,5 @@ module.exports = app => {
     },
   });
 
-  return mongoose.model('Coupon', SalesSchema, 'coupon');
+  return mongoose.model('Plat', SalesSchema, 'plat');
 }
