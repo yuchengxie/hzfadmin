@@ -114,7 +114,14 @@ module.exports = app => {
   router.get('/redis/flushall', controller.cache.flushall);
 
   //营销管理--优惠券
+  //1.商家
   router.get('/coupon', controller.coupon.index);
   router.post('/coupon/add', controller.coupon.add);
   router.post('/coupon/edit', controller.coupon.edit);
+
+  //2.平台
+  // router.get('/coupon/platform/push', controller.platform.platPush);
+  // router.get('/coupon/platform', controller.platform.index);
+  // router.post('/coupon/platform/add', controller.platform.add);
+  // router.post('/coupon/platform/edit', controller.platform.edit);
 };

@@ -4,6 +4,10 @@ module.exports = app => {
   const Schema = mongoose.Schema;
   var d = new Date();
   const SalesSchema = new Schema({
+    goods_select: {
+      type: Array,
+      default: []
+    },
     amount: {
       type: Number  //金额
     },
@@ -15,11 +19,11 @@ module.exports = app => {
     },
     beginTime: {
       type: Number,
-      default:d.getTime()     //开始时间
+      default: d.getTime()     //开始时间
       // default:''
     },
     endTime: {
-      type: 'Number',
+      type: Number,
       default: d.getTime()   //结束时间
     },
     getNumber: {
@@ -30,9 +34,6 @@ module.exports = app => {
     },
     description: {
       type: String       //活动说明
-    },
-    goods_id: {
-      type: Schema.Types.ObjectId   //类型id
     },
   });
 

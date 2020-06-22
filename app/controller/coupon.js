@@ -6,8 +6,7 @@ const { redis } = require('../../config/plugin.js');
 class CouponController extends BaseController {
 
   async index() {
-    console.log('coupon index');
-    let list = await this.app.model.Coupon.find({});
+    let list = await this.ctx.model.Coupon.find({});
     this.ctx.body = {
       list
     }
@@ -18,7 +17,7 @@ class CouponController extends BaseController {
     var fields = this.ctx.request.body;
     console.log('add:', fields);
     var coupon = new this.ctx.model.Coupon(fields);
-    coupon.save();
+    await coupon.save();
     this.ctx.body = {
       code: 20000,
       msg: '增加优惠券成功'
@@ -28,6 +27,7 @@ class CouponController extends BaseController {
 
   async edit() {
     var fields = this.ctx.request.body;
+    console.log('edit:', fields);
     let _id = fields._id;
     await this.ctx.model.Coupon.updateOne({ _id }, fields);
     this.ctx.body = {
@@ -35,7 +35,6 @@ class CouponController extends BaseController {
       msg: '编辑优惠券成功'
     }
   }
-
 
 
 }

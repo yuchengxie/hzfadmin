@@ -15,7 +15,7 @@ class CacheController extends BaseController {
     // }
     await this.app.redis.flushall();
     this.ctx.body = {
-      res: '清理完成'
+    res: '清理完成'
     }
   }
 

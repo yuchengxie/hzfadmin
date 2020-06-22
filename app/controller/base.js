@@ -1,15 +1,16 @@
 'use strict';
 
 const Controller = require('egg').Controller;
+const CacheMangerKey = require('../../config/CacheMangerKey');
 
 class BaseController extends Controller {
   async del() {
     let model = this.ctx.request.query.model;
-    // URLDecoder.decode();
     let _id = this.ctx.request.query.id;
     //推送消息
     if (model === 'Info') {
-      await this.service.mqtt.push("info_delete");
+      await this.service.mqtt.push({ type: "info_delete", body: {} });
+      await this.service.cache.set(CacheMangerKey.XIN_CACHE_KEY, null);
     }
     await this.ctx.model[model].deleteOne({
       _id

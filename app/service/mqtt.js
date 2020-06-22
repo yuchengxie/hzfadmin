@@ -3,10 +3,16 @@ const request = require('request');
 
 class MqttService extends Service {
   async push(msg) {
+    // console.log('msg:',msg);
+    if (!msg.type || !msg.body) {
+      console.log('不发');
+      return
+    };
+    msg = JSON.stringify(msg);
+    console.log('发:', msg);
     return send(msg);
   }
 }
-
 
 function send(msg) {
   return new Promise(function (resolve, reject) {
