@@ -125,6 +125,12 @@ module.exports = app => {
   router.post('/plat/add', controller.plat.add);
   router.post('/plat/edit', controller.plat.edit);
 
+  //客户端App版本管理
+  router.get('/phone/version',controller.version.index);
+  router.post('/phone/version/add',controller.version.add);
+  router.post('/phone/version/edit',controller.version.edit);
+  // router.post('/phone/version/edit',controller.phoneVersion.edit);
+
   // router.get('/coupon/platform/push', controller.platform.platPush);
   // router.get('/coupon/platform', controller.platform.index);
   // router.post('/coupon/platform/add', controller.platform.add);

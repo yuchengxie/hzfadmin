@@ -39,6 +39,7 @@ class PlatController extends BaseController {
   async push() {
     let msg = this.ctx.query;
     let res = await this.service.mqtt.push(msg);
+    console.log('push res:', msg, res);
     this.ctx.body = {
       res
     }
