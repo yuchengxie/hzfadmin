@@ -46,6 +46,8 @@ class InfoController extends BaseController {
     await this.ctx.model.Info.updateOne({
       _id
     }, fields);
+    await this.service.cache.set(CacheMangerKey.XIN_CACHE_KEY, null);
+    await this.service.mqtt.push({ type: "info_add", body: {} });
     this.ctx.body = {
       code: 20000,
       msg: '修改成功'

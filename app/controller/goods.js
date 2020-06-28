@@ -3,6 +3,17 @@
 const Controller = require('egg').Controller;
 
 class GoodsController extends Controller {
+
+  async list(){
+    let goodsResult = await this.ctx.model.Goods.find();
+    this.ctx.body = {
+      code: 20000,
+      msg: {
+        goodsResult,
+      }
+    }
+  }
+
   async index() {
     let params = this.ctx.request.body;
     let tj = {}

@@ -13,6 +13,10 @@ module.exports = app => {
       type: String,
       default: ''
     },
+    goods_id: {
+      type: String,
+      default: ''
+    },
     cate_id: {
       type: Schema.Types.Mixed
     },
