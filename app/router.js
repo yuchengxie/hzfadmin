@@ -61,6 +61,8 @@ module.exports = app => {
   //goods
   // router.get('/goods', controller.goods.index);
   router.post('/goods', controller.goods.index);
+  // router.get('/goods/spu', controller.goods.spu);
+  router.post('/goods/spu', controller.goods.spu);
   router.get('/goods/list', controller.goods.list);
   router.post('/goods/add', controller.goods.add);
   router.post('/goods/edit', controller.goods.edit);
@@ -106,7 +108,8 @@ module.exports = app => {
   //order
   router.get('/order', controller.order.index);
   router.post('/orderExpress', controller.order.bindOrderForExpress);
-
+  router.post('/szpaySuc', controller.order.purchaseSuc);
+  
   //address
   router.get('/address', controller.address.index);
   router.post('/address/detail', controller.address.detail);
@@ -130,6 +133,8 @@ module.exports = app => {
   router.get('/phone/version', controller.version.index);
   router.post('/phone/version/add', controller.version.add);
   router.post('/phone/version/edit', controller.version.edit);
+
+  //接到下单成功通知
   // router.post('/phone/version/edit',controller.phoneVersion.edit);
 
   // router.get('/coupon/platform/push', controller.platform.platPush);

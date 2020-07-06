@@ -4,7 +4,50 @@ const Controller = require('egg').Controller;
 
 class GoodsController extends Controller {
 
-  async list(){
+  async spu() {
+    let params = this.ctx.request.body;
+    let tj = {}
+    if (params.master_id) {
+      tj = {
+        master_id: params.master_id
+      }
+    }
+    let list = await this.ctx.model.Goods.aggregate([{
+      $lookup: {
+        from: "goods",
+        localField: "_id",
+        foreignField: "spu",
+        as: "items",
+      }
+    },
+    {
+      $match: {
+        spu: "",
+        master_id: params.master_id
+      },
+    },
+    {
+      $sort: {
+        sort: 1
+      }
+    }
+    ]);
+    var modules = await this.ctx.model.Goods.find({
+      "spu": ""
+    }, '_id title').sort({ "sort": 1 });
+
+    let goodsColor = await this.ctx.model.GoodsColor.find({});
+    this.ctx.body = {
+      code: 20000,
+      msg: {
+        list,
+        modules,
+        goodsColor
+      }
+    }
+  }
+
+  async list() {
     let goodsResult = await this.ctx.model.Goods.find();
     this.ctx.body = {
       code: 20000,
@@ -23,6 +66,7 @@ class GoodsController extends Controller {
       }
     }
     let goodsResult = await this.ctx.model.Goods.find(tj);
+
     let goodsColor = await this.ctx.model.GoodsColor.find({});
     this.ctx.body = {
       code: 20000,
@@ -41,9 +85,13 @@ class GoodsController extends Controller {
 
     }
 
-
     formFields.goods_sn = await this.service.tools.getRFID();//临时数据测试，随机生成
+
+    if (formFields.spu && typeof formFields.spu === 'string') {
+      formFields.spu = this.app.mongoose.Types.ObjectId(formFields.spu);
+    }
     console.log('goods add formFields:', formFields);
+
     if (formFields.goods_type_id && typeof formFields.goods_type_id === 'string') {
       formFields.goods_type_id = this.app.mongoose.Types.ObjectId(formFields.goods_type_id);
     }
@@ -115,6 +163,11 @@ class GoodsController extends Controller {
     if (formFields.goods_type_id && typeof formFields.goods_type_id === 'string') {
       formFields.goods_type_id = this.app.mongoose.Types.ObjectId(formFields.goods_type_id);
     }
+
+    if (formFields.spu && typeof formFields.spu === 'string') {
+      formFields.spu = this.app.mongoose.Types.ObjectId(formFields.spu);
+    }
+
     formFields.goods_color = this.service.tools.arrToStr(formFields.goods_color) || "";
     let goods_id = formFields._id;
     await this.ctx.model.Goods.updateOne({

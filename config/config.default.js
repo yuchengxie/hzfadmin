@@ -46,7 +46,7 @@ module.exports = appInfo => {
   };
 
   exports.mongoose = {
-    url: "mongodb://admin:qwerty123@118.190.105.235:27017/hzfds_admin",
+    url: "mongodb://admin:qwerty123@118.190.105.235:27017/hzfds_admin?replaceState=rs",
     options: {
       // useUnifiedTopology: true,
     }

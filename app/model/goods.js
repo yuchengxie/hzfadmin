@@ -4,10 +4,12 @@ module.exports = app => {
 
   var d = new Date();
   const GoodsSchema = new Schema({
+    spu: { type: Schema.Types.Mixed },
     master: { type: String, default: '' },//唯一 对应admin 中的username
     master_id: { type: Schema.Types.Mixed },////唯一 对应admin 中的username对应的id
     owner: { type: String, default: '' },
     title: { type: String },
+    goods_brief: { type: String },
     sub_title: { type: String },
     goods_sn: { type: String, default: "00000000000000000000000000000000" },
     cate_id: { type: String, default: '' },
@@ -19,7 +21,7 @@ module.exports = app => {
       type: Number,
       default: 1000000 //总预售数量
     },
-    goods_number: {
+    goods_number: {//库存
       type: Number,
       default: 1000
     },

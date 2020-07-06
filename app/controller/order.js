@@ -18,5 +18,17 @@ class OrderController extends BaseController {
     }
   }
 
+  async purchaseSuc() {
+    console.log('purchaseSuc....');
+    let msg = this.ctx.request.body;
+    console.log('msg:', msg);
+    if (msg) {
+      await this.service.mqtt.push({ type: "purchase_success", body: msg });
+    }
+    this.ctx.body = {
+      code: 20000,
+      msg: msg
+    }
+  }
 }
 module.exports = OrderController;
