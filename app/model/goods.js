@@ -102,6 +102,14 @@ module.exports = app => {
     deliver_time: {//出货时间
       type: Number,
       default: d.getTime()
+    },
+    cart_status: {
+      type: Number,
+      default: 0
+    },
+    cart_num: {
+      type: Number,
+      default: 0
     }
   });
   return mongoose.model("Goods", GoodsSchema, "goods");
