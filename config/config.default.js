@@ -46,7 +46,8 @@ module.exports = appInfo => {
   };
 
   exports.mongoose = {
-    url: "mongodb://admin:qwerty123@118.190.105.235:27017/hzfds_admin?replaceState=rs",
+    // url: "mongodb://admin:qwerty123@118.190.105.235:27017/hzfds_admin?replaceState=rs",
+    url: "mongodb://admin:qwerty123@127.0.0.1:27017/hzfds_admin?replaceState=rs",
     options: {
       // useUnifiedTopology: true,
     }
@@ -55,7 +56,8 @@ module.exports = appInfo => {
   exports.redis = {
     client: {
       port: 6379,
-      host: "118.190.105.235",
+      // host: "118.190.105.235",
+      host:"127.0.0.1",
       password: "qwerty123",
       db: 0
     }
