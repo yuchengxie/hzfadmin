@@ -3,7 +3,7 @@ const BaseController = require('./base');
 
 class VersionController extends BaseController {
   async index() {
-    let list = await this.ctx.model.Versions.find({});
+    let list = await this.ctx.model.Version.find({});
     this.ctx.body = {
       list
     }
@@ -12,7 +12,7 @@ class VersionController extends BaseController {
 
   async add() {
     let fields = this.ctx.request.body;
-    let phone_version = new this.ctx.model.Versions(fields);
+    let phone_version = new this.ctx.model.Version(fields);
     await phone_version.save();
     console.log('phone version edit:', fields);
     this.ctx.body = {
@@ -23,7 +23,7 @@ class VersionController extends BaseController {
   async edit() {
     let fields = this.ctx.request.body;
     console.log('phone version edit:', fields);
-    await this.ctx.model.Versions.updateOne({ _id: fields._id }, fields);
+    await this.ctx.model.Version.updateOne({ _id: fields._id }, fields);
     this.ctx.body = {
       msg: 'version edit success'
     }

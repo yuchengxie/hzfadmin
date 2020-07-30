@@ -1,14 +1,9 @@
-/*
- * @Date: 2020-01-30 23:56:53
- * @LastEditors: wangbingqi
- * @LastEditTime : 2020-02-03 18:45:40
- */
 
 module.exports = app => {
     const mongoose = app.mongoose;
     const Schema = mongoose.Schema;
     var d = new Date();
-    var VersionsSchema = Schema({
+    var VersionSchema = Schema({
         name: {
             type: String
         },
@@ -26,5 +21,5 @@ module.exports = app => {
             default: d.getTime()
         }
     })
-    return mongoose.model('Versions', VersionsSchema, 'versions');
+    return mongoose.model('Version', VersionSchema, 'version');
 }
