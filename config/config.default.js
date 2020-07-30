@@ -56,8 +56,8 @@ module.exports = appInfo => {
   exports.redis = {
     client: {
       port: 6379,
-      // host: "118.190.105.235",
-      host:"127.0.0.1",
+      host: "118.190.105.235",
+      // host:"127.0.0.1",
       password: "qwerty123",
       db: 0
     }
