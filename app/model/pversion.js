@@ -8,7 +8,7 @@ module.exports = app => {
     const mongoose = app.mongoose;
     const Schema = mongoose.Schema;
     var d = new Date();
-    var VersionSchema = Schema({
+    var PVersionSchema = Schema({
         name: {
             type: String
         },
@@ -26,5 +26,5 @@ module.exports = app => {
             default: d.getTime()
         }
     })
-    return mongoose.model('Version', VersionSchema, 'version');
+    return mongoose.model('PVersion', PVersionSchema, 'pversion');
 }
