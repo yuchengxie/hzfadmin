@@ -23,7 +23,7 @@ class VersionController extends BaseController {
   async edit() {
     let fields = this.ctx.request.body;
     console.log('phone version edit:', fields);
-    await this.ctx.model.PVersion.updateOne({ _id: fields._id }, fields);
+    await this.ctx.model.Versions.updateOne({ _id: fields._id }, fields);
     this.ctx.body = {
       msg: 'version edit success'
     }
