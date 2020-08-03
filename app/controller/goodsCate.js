@@ -4,26 +4,57 @@ const Controller = require('egg').Controller;
 
 class GoodsCateController extends Controller {
 
+
+  // async topCate() {
+  //   //cate公开的，不需要master_id 
+  //   await this.ctx.model.GoodsCate.aggregate(
+  //     [
+  //       {
+  //         $lookup: {
+  //           from: 'goods_cate',
+  //           localField: '_id',
+  //           foreginField: 'pid',
+  //           as: 'items'
+  //         },
+  //       },
+  //       {
+  //         $match: {
+  //           pid: '',
+  //         }
+  //       }
+  //     ]
+  //   );
+  // }
+
+
   async index() {
     let result = await this.ctx.model.GoodsCate.aggregate([{
-        $lookup: {
-          from: "goods_cate",
-          localField: "_id",
-          foreignField: "pid",
-          as: "items"
-        }
-      },
-      {
-        $match: {
-          pid: "0"
-        }
+      $lookup: {
+        from: "goods_cate",
+        localField: "_id",
+        foreignField: "pid",
+        as: "items"
       }
+    },
+    {
+      $match: {
+        pid: "0"
+      }
+    }
     ]);
     this.ctx.body = {
       code: 20000,
       msg: result
     }
   }
+
+  // async index() {
+  //   let result = await this.ctx.model.GoodsCate.find({});
+  //   this.ctx.body = {
+  //     code: 20000,
+  //     msg: result
+  //   }
+  // }
 
   async top() {
     //顶级分类
@@ -32,18 +63,18 @@ class GoodsCateController extends Controller {
     // });
 
     let list = await this.ctx.model.GoodsCate.aggregate([{
-        $lookup: {
-          from: "goods_cate",
-          localField: "_id",
-          foreignField: "pid",
-          as: "items",
-        }
-      },
-      {
-        $match: {
-          pid: "0"
-        }
+      $lookup: {
+        from: "goods_cate",
+        localField: "_id",
+        foreignField: "pid",
+        as: "items",
       }
+    },
+    {
+      $match: {
+        pid: "0"
+      }
+    }
     ]);
     // console.log('list:', list);
     this.ctx.body = {

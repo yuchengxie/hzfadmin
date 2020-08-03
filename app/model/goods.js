@@ -12,6 +12,8 @@ module.exports = app => {
     goods_brief: { type: String },
     sub_title: { type: String },
     goods_sn: { type: String, default: "00000000000000000000000000000000" },
+    cate_id_1: { type: Schema.Types.ObjectId},
+    cate_id_2: { type: Schema.Types.ObjectId},
     cate_id: { type: String, default: '' },
     click_count: {
       type: Number,

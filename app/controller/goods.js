@@ -4,6 +4,7 @@ const Controller = require('egg').Controller;
 
 class GoodsController extends Controller {
 
+
   async spu() {
     let params = this.ctx.request.body;
     let tj = {}
@@ -48,7 +49,7 @@ class GoodsController extends Controller {
   }
 
   async list() {
-    let goodsResult = await this.ctx.model.Goods.find();
+    let goodsResult = await this.ctx.model.Goods.find({});
     this.ctx.body = {
       code: 20000,
       msg: {
@@ -83,6 +84,14 @@ class GoodsController extends Controller {
     //解决cate_id为空
     if (formFields.cate_id === '') {
 
+    }
+
+    if (formFields.cate_id_1 && typeof formFields.cate_id_1 === 'string') {
+      formFields.cate_id_1 = this.app.mongoose.Types.ObjectId(formFields.cate_id_1);
+    }
+
+    if (formFields.cate_id_2 && typeof formFields.cate_id_2 === 'string') {
+      formFields.cate_id_2 = this.app.mongoose.Types.ObjectId(formFields.cate_id_2);
     }
 
     formFields.goods_sn = await this.service.tools.getRFID();//临时数据测试，随机生成
