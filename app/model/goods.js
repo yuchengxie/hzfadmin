@@ -48,6 +48,7 @@ module.exports = app => {
     goods_img: {
       type: String
     },
+    
     goods_gift: {
       type: String
     },

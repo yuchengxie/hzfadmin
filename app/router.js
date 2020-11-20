@@ -109,6 +109,8 @@ module.exports = app => {
   router.get('/order', controller.order.index);
   router.post('/orderExpress', controller.order.bindOrderForExpress);
   router.post('/szpaySuc', controller.order.purchaseSuc);
+  ////预约订单推送消息
+  
   
   //address
   router.get('/address', controller.address.index);
