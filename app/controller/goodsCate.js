@@ -76,7 +76,6 @@ class GoodsCateController extends Controller {
       }
     }
     ]);
-    // console.log('list:', list);
     this.ctx.body = {
       code: 20000,
       msg: list

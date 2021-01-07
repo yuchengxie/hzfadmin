@@ -7,6 +7,7 @@ module.exports = app => {
     spu: { type: Schema.Types.Mixed },
     master: { type: String, default: '' },//唯一 对应admin 中的username
     master_id: { type: Schema.Types.Mixed },////唯一 对应admin 中的username对应的id
+    master_nickname:{type:String},
     owner: { type: String, default: '' },
     title: { type: String },
     goods_brief: { type: String },

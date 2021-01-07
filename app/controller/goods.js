@@ -6,8 +6,10 @@ class GoodsController extends Controller {
 
 
   async spu() {
+    //获取所有spu标准单元产品
     let params = this.ctx.request.body;
     let tj = {}
+    console.log('params:', params);
     if (params.master_id) {
       tj = {
         master_id: params.master_id
@@ -33,6 +35,7 @@ class GoodsController extends Controller {
       }
     }
     ]);
+    // console.log('list:', list);
     var modules = await this.ctx.model.Goods.find({
       "spu": ""
     }, '_id title').sort({ "sort": 1 });
@@ -66,7 +69,10 @@ class GoodsController extends Controller {
         master_id: params.master_id
       }
     }
+    console.log('params:', params);
     let goodsResult = await this.ctx.model.Goods.find(tj);
+
+    console.log('goodsResult:', goodsResult);
 
     let goodsColor = await this.ctx.model.GoodsColor.find({});
     this.ctx.body = {
@@ -86,6 +92,9 @@ class GoodsController extends Controller {
 
     }
 
+    // let master = await this.ctx.model.Admin.find({ master_id: formFields.master_id });
+    // formFields.master_nickname = master[0].nickname;
+    // console.log('ormFields.master_nickname:', formFields.master_nickname);
     if (formFields.cate_id_1 && typeof formFields.cate_id_1 === 'string') {
       formFields.cate_id_1 = this.app.mongoose.Types.ObjectId(formFields.cate_id_1);
     }
@@ -168,10 +177,15 @@ class GoodsController extends Controller {
   async edit() {
     let formFields = this.ctx.request.body;
     // formFields.goods_sn=await this.service.tools.getRFID()
-    // console.log('edit:', formFields);
+    console.log('>>>>edit:', formFields);
     if (formFields.goods_type_id && typeof formFields.goods_type_id === 'string') {
       formFields.goods_type_id = this.app.mongoose.Types.ObjectId(formFields.goods_type_id);
     }
+
+    // let master = await this.ctx.model.Admin.find({ _id: this.app.mongoose.Types.ObjectId(formFields.master_id) });
+    // console.log('master:',master);
+    // formFields.master_nickname = master[0].nickname;
+    // console.log('ormFields.master_nickname:', formFields.master_nickname);
 
     if (formFields.spu && typeof formFields.spu === 'string') {
       formFields.spu = this.app.mongoose.Types.ObjectId(formFields.spu);
@@ -256,11 +270,12 @@ class GoodsController extends Controller {
 
   async mix() {
     let goods_id = this.ctx.request.query.id;
-    // console.log('mix goods_id:', goods_id);
+    console.log('mix goods_id:', goods_id);
     //获取所有颜色
     let goodsColor = await this.ctx.model.GoodsColor.find();
     //获取所有商品类型
     let goodsType = await this.ctx.model.GoodsType.find({});
+    console.log('goodsType:', goodsType);
     //获取商品相册
     let goodsPhoto = await this.ctx.model.GoodsImage.find({
       goods_id: goods_id
@@ -279,7 +294,8 @@ class GoodsController extends Controller {
         pid: "0"
       }
     }
-    ])
+    ]);
+
     this.ctx.body = {
       code: 20000,
       msg: {

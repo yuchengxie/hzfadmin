@@ -24,6 +24,7 @@ module.exports = app => {
   router.get('/admin', controller.admin.index);
   router.post('/admin/add', controller.admin.add);
   router.post('/admin/edit', controller.admin.edit);
+  router.post('/admin/findById', controller.admin.findById);
 
   //role
   router.get('/role', controller.role.index);

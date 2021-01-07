@@ -5,6 +5,7 @@ let BaseController = require("./base");
 class GoodsTypeAttributeController extends BaseController {
   async index() {
     let type_id = this.ctx.request.query.id;
+    console.log('type_id:',type_id);
     var goodsTypeAttr = await this.ctx.model.GoodsTypeAttribute.aggregate([{
         $lookup: {
           from: "goods_type",

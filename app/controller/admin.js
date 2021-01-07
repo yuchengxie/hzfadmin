@@ -13,10 +13,19 @@ class AdminController extends BaseController {
     }
   }
 
+
+  async findById() {
+    let fields = this.ctx.request.body;
+    let list = await this.ctx.model.Admin.find({ _id: this.app.mongoose.Types.ObjectId(fields.master_id) });
+    this.success(list);
+  }
+
+
+
   async add() {
     //验证数据合法
     let fields = this.ctx.request.body;
-    console.log('user fields',fields);
+    console.log('user fields', fields);
     fields.password = await this.service.tools.md5(fields.password);
     console.log('fields:', fields);
     //将数据写入数据库
@@ -36,6 +45,7 @@ class AdminController extends BaseController {
     let _id = fields_s._id;
     let fields = {
       _id: fields_s._id,
+      nickname: fields_s.nickname,
       mobile: fields_s.mobile,
       email: fields_s.email,
       role_id: fields_s.role_id,

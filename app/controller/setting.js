@@ -31,7 +31,6 @@ class SettingController extends Controller {
     }
     //3.返回数据
     let list = await this.ctx.model.Access.find({},'_id module_id name label url ');
-    console.log('list:', list);
     this.ctx.body = {
       code: 20000,
       msg: list
