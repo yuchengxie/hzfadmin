@@ -45,6 +45,12 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.cluster = {
+    listen: {
+      port: 8001
+    }
+  }
+
   exports.mongoose = {
     url: "mongodb://admin:qwerty123@118.190.105.235:27017/hzfds_admin?replaceState=rs",
     // url: "mongodb://admin:qwerty123@127.0.0.1:27017/hzfds_admin?replaceState=rs",
