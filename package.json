@@ -37,6 +37,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
+    
     "start": "egg-scripts start --daemon --title=egg-server-hzfds_admin -p 8001",
     "stop": "egg-scripts stop --title=egg-server-init",
     "dev": "egg-bin dev -p 8001",
