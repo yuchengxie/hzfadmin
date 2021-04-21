@@ -182,6 +182,10 @@ class GoodsController extends Controller {
       formFields.goods_type_id = this.app.mongoose.Types.ObjectId(formFields.goods_type_id);
     }
 
+    // if(formFields.goods_content && type formFields.goods_content === 'Array'){
+      
+    // }
+
     // let master = await this.ctx.model.Admin.find({ _id: this.app.mongoose.Types.ObjectId(formFields.master_id) });
     // console.log('master:',master);
     // formFields.master_nickname = master[0].nickname;
@@ -190,6 +194,7 @@ class GoodsController extends Controller {
     if (formFields.spu && typeof formFields.spu === 'string') {
       formFields.spu = this.app.mongoose.Types.ObjectId(formFields.spu);
     }
+
 
     formFields.goods_color = this.service.tools.arrToStr(formFields.goods_color) || "";
     let goods_id = formFields._id;

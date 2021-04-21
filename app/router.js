@@ -10,16 +10,14 @@
 module.exports = app => {
   const {
     router,
-    controller
+    controller,
   } = app;
-
-  //public
-  router.get('/del', controller.base.del);
 
   router.get('/', controller.home.index);
   router.get('/menu', controller.login.setMenu);
   router.post('/login', controller.login.login);
-
+  //public
+  router.get('/del', controller.base.del);
   //admin
   router.get('/admin', controller.admin.index);
   router.post('/admin/add', controller.admin.add);
@@ -53,7 +51,7 @@ module.exports = app => {
   router.get('/goods/type', controller.goodsType.index);
   router.post('/goods/type/add', controller.goodsType.add);
   router.post('/goods/type/edit', controller.goodsType.edit);
-  
+
   //goodstypeAttr
   router.get('/goods/type/attr', controller.goodsTypeAttr.index);
   router.post('/goods/type/attr/add', controller.goodsTypeAttr.add);
@@ -111,8 +109,8 @@ module.exports = app => {
   router.post('/orderExpress', controller.order.bindOrderForExpress);
   router.post('/szpaySuc', controller.order.purchaseSuc);
   ////预约订单推送消息
-  
-  
+
+
   //address
   router.get('/address', controller.address.index);
   router.post('/address/detail', controller.address.detail);
@@ -136,6 +134,8 @@ module.exports = app => {
   router.get('/phone/version', controller.version.index);
   router.post('/phone/version/add', controller.version.add);
   router.post('/phone/version/edit', controller.version.edit);
+
+
 
   //接到下单成功通知
   // router.post('/phone/version/edit',controller.phoneVersion.edit);

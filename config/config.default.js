@@ -91,6 +91,15 @@ module.exports = appInfo => {
     appCode: 'APPCODE 99a7ec151fe248f995582d2420e9a298'
   }
 
+  // exports.io = {
+  //   namespace: {
+  //     '/': {
+  //       connectionMiddleware: ['auth'],
+  //       packetMiddleware: [], // 针对消息的处理暂时不实现
+  //     },
+  //   },
+  // };
+
   // exports.security = {
   //   csrf: {
   //     // 判断是否需要 ignore 的方法，请求上下文 context 作为第一个参数
